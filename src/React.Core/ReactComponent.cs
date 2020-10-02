@@ -245,12 +245,14 @@ namespace React
 		/// <returns>JavaScript</returns>
 		public virtual void RenderJavaScript(TextWriter writer)
 		{
+			writer.Write("window.addEventListener('DOMContentLoaded', function() {");
 			writer.Write(
 				!_configuration.UseServerSideRendering || ClientOnly ? "ReactDOM.render(" : "ReactDOM.hydrate(");
 			WriteComponentInitialiser(writer);
 			writer.Write(", document.getElementById(\"");
 			writer.Write(ContainerId);
 			writer.Write("\"))");
+			writer.Write("});");
 		}
 
 		/// <summary>

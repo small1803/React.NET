@@ -95,6 +95,7 @@ namespace React.Router
 		/// <returns>JavaScript</returns>
 		public override void RenderJavaScript(TextWriter writer)
 		{
+			writer.Write("window.addEventListener('DOMContentLoaded', function() {");
 			writer.Write("ReactDOM.hydrate(");
 			base.WriteComponentInitialiser(writer);
 			writer.Write(", document.getElementById(\"");
